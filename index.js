@@ -18,9 +18,13 @@ mongoose.connect(
 app.use(express.json());
 app.use(cors);
 
+// Static files (images)
+app.use(express.static('public'));
+
 // Routes
 app.use('/api', authRoute);
 app.use('/api', imagesRoute);
 
+const port = process.env.PORT || 8080;
 // eslint-disable-next-line no-console
-app.listen(8080, () => console.log('Server up and running at http://localhost:8080'));
+app.listen(port, () => console.log(`Server up and running at http://localhost:${port}`));
